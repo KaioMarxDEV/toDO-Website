@@ -1,16 +1,15 @@
-import { Input } from './Input';
 
 import styles from './app.module.css';
+import { Header } from './components/Header';
+import { Main } from './components/Main';
 
 import './global.css';
-import { Header } from './Header';
 
 function App() {
   return (
     <div className={styles.app}>
-      <div className={styles.container}>
-        <Header />
-      </div>
+      <Header />
+      <Main />
     </div>
   );
 }
