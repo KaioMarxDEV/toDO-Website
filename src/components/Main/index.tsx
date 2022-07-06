@@ -1,5 +1,5 @@
 import { PlusCircle } from 'phosphor-react'
-import { FormEvent, useEffect, useState } from 'react'
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { Task } from '../Task'
 import styles from './main.module.css'
 
@@ -19,7 +19,7 @@ export function Main() {
     localStorage.setItem('@toDO-website', JSON.stringify(taskCreated))
   }
 
-  function handleInputChange(e: any) {
+  function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
     setText(e.target.value)
   }
 
