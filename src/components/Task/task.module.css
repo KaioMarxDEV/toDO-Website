@@ -10,7 +10,7 @@
   border-radius: 8px;
 }
 
-.taskComponent+.taskComponent {
+.taskComponent + .taskComponent {
   margin-top: 0.75rem;
 }
 
