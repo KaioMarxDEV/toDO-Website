@@ -1,14 +1,19 @@
 import { PlusCircle } from 'phosphor-react'
 import { useState } from 'react'
-import { Input } from '../Input'
 import { Task } from '../Task'
 import styles from './main.module.css'
 
 export function Main() {
+  const [newTaskText, setNewTaskText] = useState('')
   const [newTask, setNewTask] = useState<Task>({} as Task)
   const [tasks, setTasks] = useState<Task[]>([
     { id: 1, text: 'dale', checkStatus: false }
   ])
+
+  //@ts-ignore
+  function handleInputChange(e) {
+    setNewTaskText(e.currentTarget.value)
+  }
 
   function handleDelete(taskIdToDelete: number) {
     setTasks(tasks.filter(task => task.id !== taskIdToDelete))
@@ -32,7 +37,13 @@ export function Main() {
   return (
     <div className={styles.main}>
       <div className={styles.inputSection}>
-        <Input handleInputChange={() => { }} />
+        <input
+          value={newTaskText}
+          type="text"
+          className={styles.input}
+          placeholder="Add a new task"
+          onChange={handleInputChange}
+        />
         <button className={styles.createTask} >
           <span>Create</span>
           <PlusCircle size={16} />
