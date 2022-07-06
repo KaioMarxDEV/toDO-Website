@@ -6,18 +6,21 @@ import styles from './task.module.css'
 export interface Task {
   id: number;
   text: string;
+  checkStatus: boolean
 }
 
 interface TaskProps {
   task: Task
   onDelete: (taskId: number) => void;
+  changeCheckStatus: (taskId: number, newType: boolean) => void;
 }
 
-export function Task({ task, onDelete }: TaskProps) {
+export function Task({ task, onDelete, changeCheckStatus }: TaskProps) {
   const [checked, setChecked] = useState(false);
 
   function handleOnClickCheckBox() {
     setChecked(!checked)
+    changeCheckStatus(task.id, !checked)
   }
 
   function handleOnDelete() {
