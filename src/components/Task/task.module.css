@@ -1,0 +1,83 @@
+.taskComponent {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 1rem;
+
+  background: var(--gray-400);
+  border: 0;
+  border-radius: 8px;
+}
+
+.taskComponent+.taskComponent {
+  margin-top: 0.75rem;
+}
+
+.taskComponent:last-of-type {
+  margin-bottom: 2rem;
+}
+
+.checkbox {
+  box-sizing: initial;
+  line-height: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+
+  margin-right: 12px;
+}
+
+.checked {
+  background: var(--purple-dark);
+  color: var(--gray-100);
+  border-radius: 999px;
+}
+
+.checked:hover {
+  background: var(--purple);
+}
+
+.unchecked {
+  color: var(--blue-dark);
+}
+
+.unchecked:hover {
+  color: var(--blue);
+}
+
+.taskComponent p {
+  width: 39.5rem;
+  overflow-wrap: break-word;
+
+  color: var(--gray-100);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.delete {
+  margin-left: 12px;
+  padding: 2px;
+  border-radius: 8px;
+  background: transparent;
+  box-sizing: initial;
+  border: 0;
+  cursor: pointer;
+
+  line-height: 0;
+  color: var(--gray-300);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.3s;
+}
+
+.delete:hover {
+  color: var(--danger);
+  background: var(--gray-500);
+  cursor: pointer;
+  box-shadow: -1px 3px 0px var(--danger);
+  transform: translateY(-6px) translateX(1px);
+}
