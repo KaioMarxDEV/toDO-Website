@@ -1,7 +1,5 @@
 .input {
-  margin: 32px 32px;
-
-  width: 32rem;
+  flex: 1;
   height: 3.3rem;
   color: var(--gray-100);
   background: var(--gray-400);

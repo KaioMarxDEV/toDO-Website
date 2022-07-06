@@ -1,4 +1,89 @@
 .main {
-  margin: 0 auto;
+  margin: -20px auto;
   max-width: 46rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inputSection {
+  display: flex;
+}
+
+.createTask {
+  margin-left: 0.5rem;
+  padding: 1rem;
+  border: 0;
+  border-radius: 8px;
+  background: var(--blue-dark);
+  color: var(--gray-100);
+
+  display: flex;
+  align-items: center;
+
+  transition: background-color 0.5s ease-in-out 0s;
+}
+
+.createTask:not(:disabled):hover {
+  background: var(--blue);
+  cursor: pointer;
+}
+
+.createTask strong {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+.createTask svg {
+  margin-left: 0.5rem;
+}
+
+.tasks {
+  margin-top: 4rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header div {
+  display: flex;
+  align-items: center;
+}
+
+.headerBlue {
+  color: var(--blue);
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.headerPurple {
+  color: var(--purple);
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.createdRatio {
+  margin-left: 0.5rem;
+  padding: 2px 8px;
+  background: var(--gray-400);
+  border-radius: 999px;
+
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--gray-200);
+}
+
+.completedRatio {
+  margin-left: 0.5rem;
+  padding: 2px 8px;
+  background: var(--gray-400);
+  border-radius: 999px;
+
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--gray-200);
 }
