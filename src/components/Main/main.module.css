@@ -51,6 +51,10 @@
   cursor: pointer;
 }
 
+.createTask:disabled {
+  cursor: not-allowed;
+}
+
 .createTask strong {
   font-size: 0.875rem;
   line-height: 1.4;

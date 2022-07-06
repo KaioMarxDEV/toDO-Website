@@ -1,22 +1,32 @@
 import { PlusCircle } from 'phosphor-react'
-import { useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { Task } from '../Task'
 import styles from './main.module.css'
 
 export function Main() {
-  const [newTaskText, setNewTaskText] = useState('')
-  const [newTask, setNewTask] = useState<Task>({} as Task)
-  const [tasks, setTasks] = useState<Task[]>([
-    { id: 1, text: 'dale', checkStatus: false }
-  ])
+  const [text, setText] = useState('')
+  const [tasks, setTasks] = useState<Task[]>([])
 
-  //@ts-ignore
-  function handleInputChange(e) {
-    setNewTaskText(e.currentTarget.value)
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault()
+    const taskCreated = [...tasks, {
+      id: tasks.length + 1,
+      text,
+      checkStatus: false
+    }]
+    setTasks(taskCreated)
+    setText('')
+    localStorage.setItem('@toDO-website', JSON.stringify(taskCreated))
+  }
+
+  function handleInputChange(e: any) {
+    setText(e.target.value)
   }
 
   function handleDelete(taskIdToDelete: number) {
-    setTasks(tasks.filter(task => task.id !== taskIdToDelete))
+    const tasksFiltred = tasks.filter(task => task.id !== taskIdToDelete)
+    setTasks(tasksFiltred)
+    localStorage.setItem('@toDO-website', JSON.stringify(tasksFiltred))
   }
 
   function handleChangeCheckStatus(taskId: number, type: boolean) {
@@ -34,21 +44,32 @@ export function Main() {
   const completedOnes = tasks.filter(task => task.checkStatus === true).length
   const createdOnes = tasks.length
 
+  useEffect(() => {
+    const loadTasks = () => {
+      const localTasks = JSON.parse(localStorage.getItem('@toDO-website')!)
+      if (localTasks) {
+        setTasks(localTasks)
+      }
+    }
+
+    loadTasks()
+  }, [])
+
   return (
     <div className={styles.main}>
-      <div className={styles.inputSection}>
+      <form onSubmit={handleSubmit} className={styles.inputSection}>
         <input
-          value={newTaskText}
-          type="text"
+          value={text}
           className={styles.input}
           placeholder="Add a new task"
           onChange={handleInputChange}
+          required
         />
-        <button className={styles.createTask} >
+        <button className={styles.createTask} disabled={text.length === 0} type="submit">
           <span>Create</span>
           <PlusCircle size={16} />
         </button>
-      </div>
+      </form>
       <div className={styles.tasks}>
         <header className={styles.header}>
           <div>
